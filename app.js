@@ -20,6 +20,17 @@ app.get("/Home", (req,res)=>{
     res.render("home.ejs");
 });
 
+app.get("/calculator/sgpa", (req,res)=>{
+    res.render("sgpacal.ejs");
+});
+
+app.get("/calculator/cgpa", (req,res)=>{
+    res.render("cgpacal.ejs");
+});
+
+app.get("/calculator/attendance", (req,res)=>{
+    res.render("attendancecal.ejs");
+});
 
 app.listen(8080, ()=>{
     console.log("Listening on port 8080 ChaturGanit stats");
