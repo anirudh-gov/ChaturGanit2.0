@@ -1,0 +1,135 @@
+body {
+    margin: 0;
+    font-family: 'Poppins', sans-serif;
+    background-color: #f4f4f4;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 100vh;
+}
+
+.website-title {
+    margin-top: 20px;
+    font-size: 3rem;
+    font-weight: 600;
+    color: #333;
+    text-align: center; 
+    letter-spacing: 1.5px; 
+    text-transform: uppercase; 
+    position: relative; 
+}
+
+.website-title::after {
+    content: ''; 
+    display: block;
+    width: 60px; 
+    height: 4px;
+    background-color: #ff6000; 
+    margin: 8px auto 0; 
+    border-radius: 2px; 
+}
+
+.section-container {
+    width: 80%;
+    margin-bottom: 1.5rem;
+}
+
+.section-title {
+    text-align: left;
+    font-size: 2rem;
+    font-weight: 500;
+    color: #333;
+    margin-bottom: 2rem;
+    /* padding-left: 20px; */
+    padding-bottom: 1rem;
+    border-bottom: 2px solid #ff6000;
+} 
+
+
+.bento-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    margin-top: 10px; 
+}
+
+.bento-card {
+    background-color: #ffffff;
+    border-radius: 8px;
+    height: 8rem;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+}
+
+.bento-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+}
+
+.bento-card h3 {
+    margin-top: 0;
+    color: #333;
+}
+
+.bento-card p {
+    color: #666;
+    font-size: 0.9rem;
+    line-height: 1.6;
+}
+
+.card1 {
+    background-color: #e9c1ff;
+}
+
+.card2 {
+    background-color: #ffb8e3;
+}
+
+.card3 {
+    background-color: #dad47a;
+}
+
+.card4 {
+    background-color: #fff570;
+}
+
+.card5 {
+    background-color: #ed9461;
+}
+
+.card6 {
+    background-color: #91d2c1;
+}
+
+
+@media (max-width: 768px) {
+    .website-title {
+        font-size: 2.5rem; 
+    }
+
+    .bento-container {
+        grid-template-columns: repeat(2, 1fr); 
+        width: 90%; 
+    }
+}
+
+@media (max-width: 480px) {
+    .website-title {
+        font-size: 2rem; 
+    }
+
+    .bento-container {
+        grid-template-columns: 1fr; 
+        gap: 15px; 
+        width: 95%;
+    }
+
+    .bento-card {
+        padding: 15px; 
+    }
+}
