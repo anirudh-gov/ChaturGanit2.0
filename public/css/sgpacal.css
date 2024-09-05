@@ -1,0 +1,73 @@
+.outerBox {
+    border: 2px solid black;
+    margin-top: 30px;
+    padding: 30px;
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column; 
+    align-items: center;
+    gap: 20px;
+    background-color: #f8f9fa;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); 
+}
+
+.insideContainer {
+    margin-top: 30px;
+    gap: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-width: min-content;
+    border: 2px solid black;
+    padding: 30px;
+    border-radius: 8px;
+    background-color: #f8f9fa;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); 
+}
+.insideContainer input[type="text"] {
+    padding: 8px;
+    border-radius: 8px;
+    border: 1px solid black;
+}
+.outerBox input[type="text"] {
+    border-radius: 8px;
+    padding: 10px;
+    border: 1px solid black;
+    margin-left: 20px;
+}
+
+.heading {
+    font-family: 'Poppins', sans-serif;
+    text-align: center;
+    margin-top: 50px;
+    margin-bottom: 20px;
+}
+
+button {
+    padding: 10px 20px;
+}
+
+.formsContainer {
+    margin-top: 20px; /* Add some space between insideContainer and formsContainer */
+    width: 100%; /* Ensure the form container takes full width */
+}
+.innerForm {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+    margin-bottom: 20px;
+}
+
+.button-container {
+    text-align: center; /* Center the button horizontally */
+    margin-top: 20px;   /* Optional margin */
+}
+
+.submitBtn {
+    margin: 20px;
+    padding: 15px;
+    min-width: max-content;
+    text-align: center;
+}
+
