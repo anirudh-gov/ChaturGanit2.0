@@ -12,7 +12,7 @@ app.use(express.static(path.join(__dirname,"public")));
 app.use(express.urlencoded({extended:true}));
 app.use(methodOverride("_method"));
 
-app.get("/Home", (req,res)=>{
+app.get("/", (req,res)=>{
     res.render("home.ejs");
 });
 
