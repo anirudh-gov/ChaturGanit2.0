@@ -1,73 +1,89 @@
-.outerBox {
-    border: 2px solid black;
-    margin-top: 30px;
-    padding: 30px;
-    border-radius: 8px;
-    display: flex;
-    flex-direction: column; 
-    align-items: center;
-    gap: 20px;
-    background-color: #f8f9fa;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); 
+/* General Styles */
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 1rem;
+}
+
+/* Heading */
+.heading {
+    text-align: center;
+    margin-top: 20px;
+    font-weight: 600;
+    font-size: 24px;
+    color: #333;
+}
+
+/* Container Styles */
+.container-md {
+    margin-top: 20px;
 }
 
 .insideContainer {
+    background-color: #ffffff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin-top: 20px;
+}
+
+/* Outer Box for forms */
+.outerBox {
+    border: 2px solid #00796b;
     margin-top: 30px;
-    gap: 50px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    min-width: min-content;
-    border: 2px solid black;
-    padding: 30px;
-    border-radius: 8px;
-    background-color: #f8f9fa;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); 
-}
-.insideContainer input[type="text"] {
-    padding: 8px;
-    border-radius: 8px;
-    border: 1px solid black;
-}
-.outerBox input[type="text"] {
-    border-radius: 8px;
-    padding: 10px;
-    border: 1px solid black;
-    margin-left: 20px;
+    padding: 20px;
+    border-radius: 10px;
+    background-color: #ffffff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
-.heading {
-    font-family: 'Poppins', sans-serif;
-    text-align: center;
-    margin-top: 50px;
-    margin-bottom: 20px;
-}
-
-button {
-    padding: 10px 20px;
-}
-
-.formsContainer {
-    margin-top: 20px; /* Add some space between insideContainer and formsContainer */
-    width: 100%; /* Ensure the form container takes full width */
-}
+/* Form Row Styles */
 .innerForm {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-around;
-    margin-bottom: 20px;
+    margin-top: 10px;
 }
 
+/* Button Styles */
 .button-container {
-    text-align: center; /* Center the button horizontally */
-    margin-top: 20px;   /* Optional margin */
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+    gap: 10px;
 }
 
-.submitBtn {
-    margin: 20px;
-    padding: 15px;
-    min-width: max-content;
+.btn {
+    padding: 10px 20px;
+    font-size: 16px;
+}
+
+/* Mobile Responsiveness */
+@media only screen and (max-width: 600px) {
+    .row {
+        flex-direction: column;
+    }
+    .button-container {
+        flex-direction: column;
+    }
+}
+
+/* Result Container */
+.container-md {
+    border: 2px solid #00796b;
     text-align: center;
+    border-radius: 12px;
+    padding: 20px;
+    background-color: #ffffff;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    margin: 10px;
 }
 
+/* Error Message Styles */
+.alert-danger {
+    color: #d9534f;
+    background-color: #f2dede;
+    border-color: #ebccd1;
+    border-radius: 4px;
+    padding: 15px;
+    margin-top: 20px;
+    font-weight: bold;
+}

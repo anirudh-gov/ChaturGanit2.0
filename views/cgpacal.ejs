@@ -4,13 +4,35 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ChaturGanit</title>
+    <title>CGPA Calculator - ChaturGanit</title>
     <link rel="stylesheet" href="/css/cgpacal.css">
     <link rel="icon" href="/Chaturganit.png" type="image/x-icon">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 <body>
-    
+    <div class="website-title">CGPA Calculator</div>
+
+    <div class="section-container">
+        <div class="section-header">
+            <h4 class="section-title">Calculate Your CGPA <i class="fa-solid fa-graduation-cap"></i></h4>
+            <a href="/Home" class="home-btn">Go Back to Home Page</a>
+        </div>
+        <form id="cgpa-form">
+            <div class="form-group">
+                <label for="num-semesters">Number of Semesters:</label>
+                <input type="number" id="num-semesters" min="1" max="12" required>
+                <button type="button" onclick="generateFields()">Generate Fields</button>
+            </div>
+
+            <div id="sgpa-fields" class="sgpa-fields"></div>
+
+            <button type="submit" class="calculate-btn">Calculate CGPA</button>
+            <button type="button" onclick="resetFields()" class="reset-btn">Reset Fields</button>
+            <div id="cgpa-result" class="result"></div>
+        </form>
+    </div>
+
+    <script src="/js/cgpa.js"></script>
 </body>
 </html>
