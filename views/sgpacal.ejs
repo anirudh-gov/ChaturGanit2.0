@@ -15,15 +15,18 @@
     <link rel="stylesheet" href="/css/sgpacal.css">
 </head>
 <body>
-    <h2 class="heading">SGPA CALCULATOR</h2>
-    <center>
-        <div class="container-md insideContainer">
-            <label>No Of Subjects: </label>
-            <input type="text" placeholder="Enter no of Subjects...">
-            <button type="button" class="btn btn-success" onclick="handleGenerataeForms()">Generate Forms</button>
+    <div class="container">
+        <h2 class="heading">SGPA CALCULATOR</h2>
+        <div class="insideContainer">
+            <center>
+                <label for="subjectCount">No Of Subjects: </label>
+                <input type="number" id="subjectCount" placeholder="Enter no of Subjects..." min="1">
+                <button type="button" class="btn btn-success" onclick="handleGenerateForms()">Generate Forms</button>
+            </center>
         </div>
-        
-    </center>
+        <div id="formContainer" class="outerBox"></div>
+        <div id="resultContainer" class="result-container"></div>
+    </div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
     <script src="/js/sgpacal.js"></script>

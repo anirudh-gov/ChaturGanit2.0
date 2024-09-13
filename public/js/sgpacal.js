@@ -1,52 +1,47 @@
-function handleGenerataeForms() {
-    const subjectInput = document.querySelector('.insideContainer input[type="text"]');
-    const numberOfSubjects = parseInt(subjectInput.value);
+// Attach an event listener to the form to prevent it from refreshing the page
+document.querySelector('form').addEventListener('submit', function(event) {
+    event.preventDefault();  // Prevent page refresh
+    handleGenerateForms();  // Call your form generation logic
+});
 
+function handleGenerateForms() {
+    const numberOfSubjects = parseInt(document.getElementById('subjectCount').value);
+    
     if (isNaN(numberOfSubjects) || numberOfSubjects <= 0) {
-        displayError('Please enter a valid positive number of subjects.');
+        showError('Please enter a valid positive number of subjects.');
         return;
     }
-
+    
     clearError();
-    let outerBox = document.querySelector('.outerBox') || createOuterBox();
-    let formsContainer = document.querySelector('.formsContainer') || createFormsContainer(outerBox);
-    formsContainer.innerHTML = ''; // Clear previous content
-
+    
+    const formContainer = document.getElementById('formContainer');
+    formContainer.innerHTML = '';
+    
     for (let i = 0; i < numberOfSubjects; i++) {
-        formsContainer.appendChild(createFormRow(i + 1));
+        formContainer.appendChild(createFormRow(i + 1));
     }
-
-    createButton('submitBtn', 'Get Your Results', 'btn-success', handleSubmit);
-    createButton('resetBtn', 'Reset', 'btn-secondary mx-2', handleReset);
-}
-
-function createOuterBox() {
-    const outerBox = document.createElement('div');
-    outerBox.classList.add('container-xl', 'outerBox');
-    document.body.appendChild(outerBox);
-    return outerBox;
-}
-
-function createFormsContainer(outerBox) {
-    const formsContainer = document.createElement('div');
-    formsContainer.classList.add('formsContainer');
-    outerBox.appendChild(formsContainer);
-    return formsContainer;
+    
+    addButtons();
+    
+    // Hide the outer box and show the form container
+    document.querySelector('.outerBox').style.display = 'none';
+    formContainer.style.display = 'flex';  // Ensure form container is displayed
+    document.querySelector('.button-container').style.display = 'flex';  // Ensure buttons are visible
 }
 
 function createFormRow(index) {
     const formRow = document.createElement('div');
-    formRow.classList.add('row', 'g-3', 'align-items-center', 'innerForm');
+    formRow.classList.add('row', 'g-3', 'align-items-center', 'innerForm'); // Ensure 'innerForm' class is applied
     formRow.innerHTML = `
         <div class="col-auto">
             <label for="inputSubject${index}" class="col-form-label">Subject ${index}</label>
         </div>
         <div class="col-auto">
-            <input type="text" id="inputSubject${index}" class="form-control inputSubject${index}" placeholder="Enter credits">
+            <input type="number" id="inputSubject${index}" class="form-control" placeholder="Enter credits" min="1">
         </div>
         <div class="col-auto">
             <button class="btn btn-secondary dropdown-toggle" id="dropdownButton${index}" data-bs-toggle="dropdown">
-                Choose Expected Grade
+                Choose Grade
             </button>
             <ul class="dropdown-menu">
                 ${['O', 'A+', 'A', 'B+', 'B', 'C+', 'C', 'D', 'F', 'Absent'].map(grade => `
@@ -58,22 +53,18 @@ function createFormRow(index) {
     return formRow;
 }
 
-function createButton(className, text, btnClass, handler) {
-    let button = document.querySelector(`.${className}`);
-    if (!button) {
-        button = document.createElement('button');
-        button.classList.add('btn', btnClass, className);
-        button.innerText = text;
-        button.onclick = handler;
-        const buttonContainer = document.querySelector('.button-container') || createButtonContainer();
-        buttonContainer.appendChild(button);
-    }
+function addButtons() {
+    const buttonContainer = document.querySelector('.button-container') || createButtonContainer();
+    buttonContainer.innerHTML = `
+        <button class="btn btn-success" onclick="calculateSGPA()">Get Your GPA</button>
+        <button class="btn btn-secondary mx-2" onclick="resetForm()">Reset</button>
+    `;
 }
 
 function createButtonContainer() {
     const buttonContainer = document.createElement('div');
     buttonContainer.classList.add('button-container');
-    document.body.appendChild(buttonContainer);
+    document.querySelector('.container').appendChild(buttonContainer);
     return buttonContainer;
 }
 
@@ -81,72 +72,67 @@ function selectGrade(subjectIndex, grade) {
     document.getElementById(`dropdownButton${subjectIndex}`).textContent = grade;
 }
 
-function handleSubmit() {
-    const gradeMap = new Map([['O', 10], ['A+', 9], ['A', 8], ['B+', 7], ['B', 6], ['C+', 5], ['C', 4], ['D', 3], ['Absent', 0], ['F', 0]]);
-    const subjectInput = document.querySelector('.insideContainer input[type="text"]');
-    const numberOfSubjects = parseInt(subjectInput.value);
-    let totalGradeSum = 0, totalCreditsSum = 0, failedSubjects = 0, absentSubjects = 0;
-
-    clearError();
+function calculateSGPA() {
+    const gradeMap = { 'O': 10, 'A+': 9, 'A': 8, 'B+': 7, 'B': 6, 'C+': 5, 'C': 4, 'D': 3, 'Absent': 0, 'F': 0 };
+    const numberOfSubjects = parseInt(document.getElementById('subjectCount').value);
+    let totalGradeSum = 0, totalCreditsSum = 0;
 
     for (let i = 0; i < numberOfSubjects; i++) {
-        const credit = parseInt(document.querySelector(`.inputSubject${i + 1}`).value);
+        const credit = parseInt(document.getElementById(`inputSubject${i + 1}`).value);
         const grade = document.getElementById(`dropdownButton${i + 1}`).textContent;
 
-        if (isNaN(credit) || credit <= 0 || !gradeMap.has(grade)) {
-            displayError(`Invalid credit or grade for Subject ${i + 1}`);
+        if (isNaN(credit) || credit <= 0 || !gradeMap.hasOwnProperty(grade)) {
+            showError(`Invalid input for Subject ${i + 1}`);
             return;
         }
-
-        if (grade === 'F') failedSubjects++;
-        else if (grade === 'Absent') absentSubjects++;
-        else {
-            totalCreditsSum += credit;
-            totalGradeSum += credit * gradeMap.get(grade);
-        }
+        totalCreditsSum += credit;
+        totalGradeSum += credit * gradeMap[grade];
     }
 
     if (totalCreditsSum === 0) {
-        displayError('No valid subjects to calculate SGPA.');
+        showError('No valid credits to calculate GPA.');
         return;
     }
 
-    showSGPA((totalGradeSum / totalCreditsSum).toFixed(2), failedSubjects, absentSubjects);
+    showResult((totalGradeSum / totalCreditsSum).toFixed(2));
 }
 
-function handleReset() {
-    document.querySelector('.formsContainer').innerHTML = '';
-    document.querySelector('.button-container').remove();
+function showResult(gpa) {
+    const resultContainer = document.getElementById('resultContainer');
+    resultContainer.innerHTML = `<h4>Your GPA: ${gpa}</h4>`;
+    resultContainer.style.display = 'block';
 }
 
-function showSGPA(sgpa, failedSubjects, absentSubjects) {
-    document.body.innerHTML = `
-        <div class="container-md" style="border: 2px solid #00796b; text-align: center; border-radius: 12px; padding: 20px; background-color: #fff; box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); margin: 10px;">
-            <h1>Congratulations!!</h1>
-            <p>Your SGPA is:</p>
-            <p style="font-size: 2rem; font-weight: bold;">${sgpa}</p>
-            ${failedSubjects > 0 ? `<p style="color: #f44336;">You have failed ${failedSubjects} subject(s).</p>` : ''}
-            ${absentSubjects > 0 ? `<p style="color: #f44336;">You are absent in ${absentSubjects} subject(s).</p>` : ''}
-        </div>
-    `;
-    Object.assign(document.body.style, {
-        display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100vh', margin: '0', backgroundColor: '#e0f7fa', fontFamily: "'Poppins', sans-serif"
-    });
+function resetForm() {
+    const numberOfSubjects = parseInt(document.getElementById('subjectCount').value);
+
+    for (let i = 0; i < numberOfSubjects; i++) {
+        // Clear input values
+        document.getElementById(`inputSubject${i + 1}`).value = '';
+
+        // Reset dropdowns to default text
+        document.getElementById(`dropdownButton${i + 1}`).textContent = 'Choose Grade';
+    }
+
+    document.getElementById('resultContainer').style.display = 'none';
+    clearError();
 }
 
-function displayError(message) {
-    let errorContainer = document.querySelector('.errorContainer') || createErrorContainer();
-    errorContainer.textContent = message;
-}
 
-function createErrorContainer() {
-    const errorContainer = document.createElement('div');
-    errorContainer.classList.add('alert', 'alert-danger', 'errorContainer');
-    document.querySelector('.formsContainer').before(errorContainer);
-    return errorContainer;
+function showError(message) {
+    let alert = document.querySelector('.alert-danger');
+    if (!alert) {
+        alert = document.createElement('div');
+        alert.classList.add('alert', 'alert-danger');
+        document.querySelector('.container').insertBefore(alert, document.querySelector('.insideContainer'));
+    }
+    alert.textContent = message;
+    alert.style.display = 'block';
 }
 
 function clearError() {
-    const errorContainer = document.querySelector('.errorContainer');
-    if (errorContainer) errorContainer.remove();
+    const alert = document.querySelector('.alert-danger');
+    if (alert) {
+        alert.style.display = 'none';
+    }
 }
