@@ -4,13 +4,80 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ChaturGanit</title>
+    <title>Chatur Ganit - Attendance Calculator</title>
     <link rel="stylesheet" href="/css/attendancecal.css">
-    <link rel="icon" href="/Chaturganit.png" type="image/x-icon">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 <body>
-    
+    <div class="website-title">Attendance Calculator</div>
+
+    <div class="container">
+        <div class="button-container">
+            <button onclick="window.location.href='/'" class="home-btn">Home</button>
+            <button onclick="resetFields()" class="reset-btn">Reset Fields</button>
+        </div>
+
+        <!-- Section 1: Current Attendance Percentage -->
+        <div class="calculator-section">
+            <h2>Current Attendance Percentage</h2>
+            <form id="attendance-percentage-form">
+                <label for="total-classes">Total Classes Conducted:</label>
+                <input type="number" id="total-classes" required>
+                <label for="attended-classes">Classes Attended:</label>
+                <input type="number" id="attended-classes" required>
+                <button type="button" id="current-attendance-btn">Calculate Percentage</button>
+            </form>
+            <div id="attendance-percentage-result"></div>
+        </div>
+
+        <!-- Section 2: Minimum Classes Required -->
+        <div class="calculator-section">
+            <h2>Minimum Classes Required to Reach Target Attendance</h2>
+            <form id="minimum-classes-form">
+                <label for="current-attended">Current Attended Classes:</label>
+                <input type="number" id="current-attended" required>
+                <label for="current-total">Total Classes Held So Far:</label>
+                <input type="number" id="current-total" required>
+                <label for="semester-total">Expected Total Classes for Semester:</label>
+                <input type="number" id="semester-total" required>
+                <label for="target-percentage">Target Attendance Percentage (%):</label>
+                <input type="number" id="target-percentage" required>
+                <button type="button" id="minimum-classes-btn">Calculate Minimum Classes</button>
+            </form>
+            <div id="minimum-classes-result"></div>
+        </div>
+
+        <!-- Section 3: Deficit Calculator -->
+        <div class="calculator-section">
+            <h2>Deficit Calculator</h2>
+            <form id="deficit-calculator-form">
+                <label for="deficit-current-attended">Current Attended Classes:</label>
+                <input type="number" id="deficit-current-attended" required>
+                <label for="deficit-current-total">Total Classes Held:</label>
+                <input type="number" id="deficit-current-total" required>
+                <label for="required-percentage">Required Attendance Percentage (%):</label>
+                <input type="number" id="required-percentage" required>
+                <button type="button" id="deficit-btn">Calculate Deficit</button>
+            </form>
+            <div id="deficit-result"></div>
+        </div>
+
+        <!-- Section 4: Class Predictor -->
+        <div class="calculator-section">
+            <h2>Class Predictor</h2>
+            <form id="class-predictor-form">
+                <label for="predict-attended">Classes Attended So Far:</label>
+                <input type="number" id="predict-attended" required>
+                <label for="predict-total">Total Classes So Far:</label>
+                <input type="number" id="predict-total" required>
+                <label for="future-classes">Expected Total Classes:</label>
+                <input type="number" id="future-classes" required>
+                <button type="button" id="predictor-btn">Predict Attendance</button>
+            </form>
+            <div id="class-predictor-result"></div>
+        </div>
+    </div>
+    <script src="/js/attendance.js"></script>
 </body>
 </html>
