@@ -26,6 +26,30 @@ body {
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Center items horizontally */
+    justify-content: center; /* Center items vertically */
+    gap: 15px; /* Add gap between items */
+}
+
+.insideContainer label,
+.insideContainer input,
+.insideContainer button {
+    margin-right: 15px; /* Add gap between items */
+}
+
+.insideContainer button {
+    margin-bottom: 0; /* Remove extra gap after the last item */
+}
+
+.insideContainer input {
+    padding: 10px;
+    border-radius: 8px;
+    border: 1px solid black;
+    min-width: 150px; /* Prevent input fields from shrinking too much */
+    max-width: 250px; /* Prevent input fields from expanding too much */
+    box-sizing: border-box; /* Ensure padding is included in width */
 }
 
 /* Outer Box for forms */
@@ -36,45 +60,132 @@ body {
     border-radius: 10px;
     background-color: #ffffff;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 }
 
 /* Form Row Styles */
 .innerForm {
+    background-color: #ffffff;
+    display: flex;
+    margin-bottom: 10px;
     margin-top: 10px;
 }
 
-/* Button Styles */
+/* Ensure last item doesn't have extra bottom margin */
+.innerForm:last-child {
+    border-bottom: none;
+    margin-bottom: 0;
+}
+
+/* Hide by default */
+#formContainer {
+    display: none;
+}
+
+/* Show button container */
 .button-container {
+    display: flex; /* or 'none' if you want it to be hidden initially */
     margin-top: 20px;
-    display: flex;
     justify-content: center;
     gap: 10px;
 }
 
+/* Button Styles */
 .btn {
     padding: 10px 20px;
     font-size: 16px;
 }
 
+/* Input Fields */
+.innerForm input {
+    padding: 10px;
+    border-radius: 8px;
+    border: 1px solid black;
+    min-width: 150px; /* Prevent input fields from shrinking too much */
+    max-width: 250px; /* Prevent input fields from expanding too much */
+    width: calc(100% - 20px); /* Adjust width to fit within container */
+    box-sizing: border-box; /* Ensure padding is included in width */
+    margin-right: 25px; /* Add space between input fields and other elements */
+}
+
+/* Dropdown Button in Form Row */
+.innerForm .dropdown-toggle {
+    padding: 10px;
+    border-radius: 8px;
+    border: 1px solid black;
+    min-width: 180px;
+    max-width: 300px;
+    width: calc(100% - 20px);
+    box-sizing: border-box;
+    text-align: center;
+    margin-right: 15px;
+}
+
+/* Dropdown Menu */
+.innerForm .dropdown-menu {
+    min-width: 150px; /* Match the min-width of the button */
+    max-width: 250px; /* Match the max-width of the button */
+    width: 100%; /* Ensure the menu matches button width */
+    box-sizing: border-box; /* Ensure consistent sizing */
+}
+
 /* Mobile Responsiveness */
-@media only screen and (max-width: 600px) {
+@media (max-width: 768px) {
     .row {
         flex-direction: column;
     }
     .button-container {
         flex-direction: column;
     }
+    .insideContainer {
+        display: flex;
+        flex-direction: column;
+    }
+    .insideContainer label,
+    .insideContainer input,
+    .insideContainer button {
+        margin-bottom: 10px; /* Add gap between items */
+    }
+    .outerBox {
+        border: 2px solid black;
+    }
+    .innerForm {   
+        border-bottom: 1px solid black; /* Line after each subject's inputs */
+        padding-bottom: 15px; /* Add space between the inputs and the border line */
+        margin-bottom: 0px;
+    }
+}
+
+@media (max-width: 480px) {
+    .insideContainer {
+        display: flex;
+        flex-direction: column;
+    }
+    .insideContainer label,
+    .insideContainer input,
+    .insideContainer button {
+        margin-bottom: 10px; /* Add gap between items */
+    }
+    .innerForm {   
+        border-bottom: 1px solid black; /* Line after each subject's inputs */
+        padding-bottom: 15px; /* Add space between the inputs and the border line */
+        margin-bottom: 0px;
+    }
 }
 
 /* Result Container */
-.container-md {
+.result-container {
     border: 2px solid #00796b;
     text-align: center;
     border-radius: 12px;
     padding: 20px;
     background-color: #ffffff;
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
-    margin: 10px;
+    margin-top: 20px;
+    display: none; /* Hidden initially */
 }
 
 /* Error Message Styles */
@@ -86,4 +197,11 @@ body {
     padding: 15px;
     margin-top: 20px;
     font-weight: bold;
+    display: none; /* Hidden initially */
+}
+
+/* Label Styles */
+.innerForm label {
+    flex: 1; /* Ensure labels align properly */
+    margin-right: 20px;
 }
