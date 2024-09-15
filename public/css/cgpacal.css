@@ -7,6 +7,7 @@ body {
     flex-direction: column;
     align-items: center;
     min-height: 100vh;
+    overflow-x: hidden;
 }
 
 a {
@@ -25,8 +26,8 @@ a {
     padding: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     background-color: #ffffff;
-    animation: slide-in 1s ease-out forwards;
-    opacity: 0;
+    /* animation: slide-in 1s ease-out forwards; */
+    /* opacity: 0; */
 }
 
 .website-title::after {
@@ -34,7 +35,7 @@ a {
     display: block;
     width: 60px;
     height: 4px;
-    background-color: #ff6000;
+    background-color: #7C93C3;
     margin: 8px auto 0;
     border-radius: 2px;
 }
@@ -43,6 +44,7 @@ a {
     width: 80%;
     margin-bottom: 2rem;
     margin-top: 3rem;
+    animation: zoom-in 1s ease-out forwards;
 }
 
 .section-header {
@@ -55,16 +57,16 @@ a {
 .section-title {
     font-size: 2rem;
     font-weight: 500;
-    color: #333;
+    color: #000b3e;
     margin: 0;
     padding-bottom: 1rem;
-    border-bottom: 2px solid #ff6000;
-    animation: slide-in 1.5s ease-out forwards;
-    opacity: 0;
+    border-bottom: 2px solid #1E2A5E;
+    /* animation: slide-in 1.5s ease-out forwards; */
+    /* opacity: 0; */
 }
 
 .home-btn {
-    background-color: #333;
+    background-color: #1E2A5E;
     color: #fff;
     padding: 8px 15px;
     border-radius: 4px;
@@ -74,7 +76,7 @@ a {
 }
 
 .home-btn:hover {
-    background-color: #555;
+    background-color: #55679C;
 }
 
 .calculator-container {
@@ -82,8 +84,8 @@ a {
     padding: 20px;
     border-radius: 12px;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-    animation: slide-in 2s ease-out forwards;
-    opacity: 0;
+    /* animation: slide-in 2s ease-out forwards; */
+    /* opacity: 0; */
     width: 100%;
     max-width: 600px;
 }
@@ -104,7 +106,7 @@ input[type="number"] {
     width: calc(100% - 20px);
     padding: 10px;
     font-size: 1rem;
-    border: 1px solid #ddd;
+    border: 1px solid #d3c081;
     border-radius: 4px;
     box-sizing: border-box;
     margin-bottom: 1rem;
@@ -112,25 +114,25 @@ input[type="number"] {
 }
 
 input[type="number"]:focus {
-    border-color: #ff6000;
+    border-color: #E1D7B7;
     outline: none;
 }
 
 button {
-    background-color: #ff6000;
+    background-color: #1E2A5E;
     color: #fff;
     border: none;
     padding: 10px 20px;
     font-size: 1.1rem;
     border-radius: 4px;
     cursor: pointer;
-    transition: background-color 0.2s ease-in-out;
+    transition: background-color 0.3s ease-in-out;
     width: 100%;
     margin-top: 10px;
 }
 
 button:hover {
-    background-color: #ffa559;
+    background-color: #55679C;
 }
 
 .result {
@@ -139,9 +141,66 @@ button:hover {
     font-size: 1.8rem;
     color: #333;
     text-align: center;
-    background-color: #e9c1ff;
+    background-color: #E1D7B7;
     border-radius: 4px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.footer {
+    background-color: #E1D7B7; /* Light background color to match your theme */
+    padding: 20px;
+    text-align: center;
+    width: 100%;
+    margin-top: auto;
+    border-top: 2px solid #1E2A5E; /* Subtle border at the top for a formal look */
+    margin-top: 2rem;
+}
+
+.footer-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    padding: 0 10px;
+}
+
+/* Developer links container styling */
+.developer-links {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-bottom: 3px solid #ffe6cf00;
+    transition: 0.8s;
+    /* margin-bottom:3px; */
+}
+
+.developer-links:hover{
+    border-bottom: 3px solid #1E2A5E;
+}
+
+.developer-links p {
+    font-weight: bold;
+    margin-bottom: 10px;
+    font-size: 1.2em; /* Slightly larger font size for emphasis */
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: #333; /* Darker text color for better readability */
+}
+
+.developer-links a {
+    color: #7C93C3; /* Color to match your theme */
+    margin: 5px 10px;
+    font-size: 1.8em;
+    text-decoration: none;
+    transition: color 0.3s ease, transform 0.8s ease; /* Smooth transition effects */
+}
+
+.developer-links a:hover {
+    color: #1E2A5E; /* Hover color to match your theme */
+    transform: translateY(-8px); /* Slight lift effect on hover */
 }
 
 /* Responsive Styles */
@@ -152,6 +211,21 @@ button:hover {
     .calculator-container {
         width: 90%;
     }
+
+    .footer-container {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .developer-links {
+        margin-bottom: 20px;
+    }
+
+    .developer-links a {
+        font-size: 1em;
+        margin: 5px 0;
+    }
+
 }
 
 @media (max-width: 480px) {
@@ -171,6 +245,20 @@ button:hover {
         width: calc(100% - 15px);
         padding: 8px;
     }
+
+    .footer-container {
+        padding: 0 5px;
+    }
+
+    .developer-links p {
+        font-size: 1em;
+    }
+
+    .developer-links a {
+        font-size: 1.4em;
+        margin: 4px 0;
+    }
+    
 }
 
 /* Keyframes for slide-in animation */
@@ -181,6 +269,17 @@ button:hover {
     }
     to {
         transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+@keyframes zoom-in {
+    from {
+        transform: scale(0.5);
+        opacity: 0;
+    }
+    to {
+        transform: scale(1);
         opacity: 1;
     }
 }

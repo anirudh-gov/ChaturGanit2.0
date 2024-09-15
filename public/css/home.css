@@ -189,6 +189,7 @@ a {
     .bento-container {
         grid-template-columns: repeat(2, 1fr);
         width: 90%;
+        margin-bottom: 2rem;
     }
 
     .footer-container {
@@ -222,6 +223,7 @@ a {
         gap: 15px;
         /* width: 95%; */
         background-color: #ffffff;
+        margin-bottom: 2rem;
     }
 
     .bento-card {

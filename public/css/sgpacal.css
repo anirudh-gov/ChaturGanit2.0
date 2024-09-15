@@ -3,7 +3,9 @@ body {
     font-family: 'Poppins', sans-serif;
     background-color: #f4f4f4;
     margin: 0;
-    padding: 1rem;
+    padding: 0 0 1rem 0;
+    overflow-x: hidden;
+    height: 100vh;
 }
 
 /* Heading */
@@ -15,9 +17,68 @@ body {
     color: #333;
 }
 
+.section-sgpa{
+    margin-top: 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+}
+.section-title{
+    margin: 1rem;
+    display: inline-block;
+    font-size: 1.8rem;
+    border-bottom: 3px solid #006107;
+    padding-bottom: 10px;
+}
+.container{
+    padding-bottom: 2rem;
+    animation: zoom-in 0.5s ease-out forwards;
+}
+
 /* Container Styles */
 .container-md {
     margin-top: 20px;
+}
+
+.website-title {
+    font-size: 3rem;
+    font-weight: 600;
+    color: #333;
+    text-align: center;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    position: relative;
+    background-color: #ffffff;
+
+    width: 100%;
+    margin-top: 0;
+    padding: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.website-title::after {
+    content: '';
+    display: block;
+    width: 60px;
+    height: 4px;
+    background-color: #006107;
+    margin: 8px auto 0;
+    border-radius: 2px;
+}
+
+.home-btn{
+        display: inline-block;
+        text-align: end;
+        margin-top: 1rem;
+        text-decoration: none;
+        color: #006107;
+        padding: 0.8rem 1.5rem;
+        border-bottom: 1px solid #00520500;
+        transition: 0.5s;
+        font-size: 1.2rem;
+}
+.home-btn:hover{
+    border-bottom: 1px solid #006107;
 }
 
 .insideContainer {
@@ -132,8 +193,68 @@ body {
     box-sizing: border-box; /* Ensure consistent sizing */
 }
 
+.footer {
+    background-color: #85c37f;
+    padding: 20px;
+    text-align: center;
+    width: 100%;
+    margin-top: 14rem;
+    border-top: 4px solid #0b4300;
+}
+
+.footer-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    padding: 0 10px;
+}
+
+/* Developer links container styling */
+.developer-links {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-bottom: 3px solid #85c37f;
+    transition: 0.8s;
+    /* margin-bottom:3px; */
+}
+
+.developer-links:hover{
+    border-bottom: 3px solid #0b4300;
+}
+
+.developer-links p {
+    font-weight: bold;
+    margin-bottom: 10px;
+    font-size: 1.2em;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: #034300
+}
+
+.developer-links a {
+    color: #003b15;
+    margin: 5px 10px;
+    font-size: 1.8em;
+    text-decoration: none;
+    transition: color 0.3s ease, transform 0.8s ease;
+}
+
+.developer-links a:hover {
+    color: #319a00; /* Hover color to match your theme */
+    transform: translateY(-8px); /* Slight lift effect on hover */
+}
+
 /* Mobile Responsiveness */
 @media (max-width: 768px) {
+    .website-title {
+        font-size: 2.5rem;
+    }
+    
     .row {
         flex-direction: column;
     }
@@ -157,9 +278,35 @@ body {
         padding-bottom: 15px; /* Add space between the inputs and the border line */
         margin-bottom: 0px;
     }
+
+    .footer-container {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .developer-links {
+        margin-bottom: 20px;
+    }
+
+    .developer-links a {
+        font-size: 1em;
+        margin: 5px 0;
+    }
+
 }
 
 @media (max-width: 480px) {
+    
+    .website-title {
+        font-size: 2rem;
+        background-color: #ffffff;
+        width: 100%;
+        margin-top: 0;
+        text-align: center; /* Aligns the text to the center */
+        padding: 10px; /* Adds some padding for better visual appearance */
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Adds a bottom shadow */
+    }
+    
     .insideContainer {
         display: flex;
         flex-direction: column;
@@ -173,6 +320,19 @@ body {
         border-bottom: 1px solid black; /* Line after each subject's inputs */
         padding-bottom: 15px; /* Add space between the inputs and the border line */
         margin-bottom: 0px;
+    }
+
+    .footer-container {
+        padding: 0 5px;
+    }
+
+    .developer-links p {
+        font-size: 1em;
+    }
+
+    .developer-links a {
+        font-size: 1.4em;
+        margin: 4px 0;
     }
 }
 
@@ -204,4 +364,15 @@ body {
 .innerForm label {
     flex: 1; /* Ensure labels align properly */
     margin-right: 20px;
+}
+
+@keyframes zoom-in {
+    from {
+        transform: scale(0.5);
+        opacity: 0;
+    }
+    to {
+        transform: scale(1);
+        opacity: 1;
+    }
 }

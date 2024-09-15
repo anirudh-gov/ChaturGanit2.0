@@ -7,7 +7,8 @@ body {
     flex-direction: column;
     align-items: center;
     min-height: 100vh;
-    padding-bottom: 20px
+    /* padding-bottom: 20px; */
+    overflow-x: hidden;
 }
 
 /* Container for the Attendance Calculator */
@@ -21,6 +22,7 @@ body {
     margin-top: 20px;
     animation: slide-in 1.5s ease-out forwards;
     opacity: 0;
+    margin-bottom: 3rem;
 }
 
 /* Section Headings
@@ -54,8 +56,8 @@ h1::after {
     padding: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     background-color: #ffffff;
-    animation: slide-in 1s ease-out forwards;
-    opacity: 0;
+    /* animation: slide-in 1s ease-out forwards;
+    opacity: 0;*/
 }
 
 .website-title::after {
@@ -166,6 +168,63 @@ button:hover {
     margin-top: 1rem;
 }
 
+
+.footer {
+    background-color: #ffe6c7; /* Light background color to match your theme */
+    padding: 20px;
+    text-align: center;
+    width: 100%;
+    margin-top: auto;
+    border-top: 2px solid #ff6000; /* Subtle border at the top for a formal look */
+}
+
+.footer-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    padding: 0 10px;
+}
+
+/* Developer links container styling */
+.developer-links {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-bottom: 3px solid #ffe6cf;
+    transition: 0.8s;
+    /* margin-bottom:3px; */
+}
+
+.developer-links:hover{
+    border-bottom: 3px solid #ff6000;
+}
+
+.developer-links p {
+    font-weight: bold;
+    margin-bottom: 10px;
+    font-size: 1.2em; /* Slightly larger font size for emphasis */
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: #333; /* Darker text color for better readability */
+}
+
+.developer-links a {
+    color: #ff6000; /* Color to match your theme */
+    margin: 5px 10px;
+    font-size: 1.8em;
+    text-decoration: none;
+    transition: color 0.3s ease, transform 0.8s ease; /* Smooth transition effects */
+}
+
+.developer-links a:hover {
+    color: #ffa559; /* Hover color to match your theme */
+    transform: translateY(-8px); /* Slight lift effect on hover */
+}
+
 /* Keyframes for Slide-in and Fade-in Animations */
 @keyframes slide-in {
     from {
@@ -191,6 +250,19 @@ button:hover {
     .website-title {
         font-size: 2.5rem;
     }
+    .footer-container {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .developer-links {
+        margin-bottom: 20px;
+    }
+
+    .developer-links a {
+        font-size: 1em;
+        margin: 5px 0;
+    }
 }
 
 @media (max-width: 480px) {
@@ -200,5 +272,17 @@ button:hover {
         text-align: center;
         padding: 10px;
         box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+    .footer-container {
+        padding: 0 5px;
+    }
+
+    .developer-links p {
+        font-size: 1em;
+    }
+
+    .developer-links a {
+        font-size: 1.4em;
+        margin: 4px 0;
     }
 }
