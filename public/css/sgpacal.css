@@ -248,7 +248,6 @@ body {
     color: #319a00; /* Hover color to match your theme */
     transform: translateY(-8px); /* Slight lift effect on hover */
 }
-
 /* Mobile Responsiveness */
 @media (max-width: 768px) {
     .website-title {
